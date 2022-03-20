@@ -43,6 +43,17 @@ defmodule CoffeeProjectTest do
 
       assert response == expected_response
     end
+
+    # the test below I created myself to improve my studies
+    test "when coffee doesn't exists, returns an error message" do
+      id = 20
+
+      expected_response = {:error, %{message: "Coffee not found", status: :not_found}}
+
+      response = CoffeeProject.delete(id)
+
+      assert response == expected_response
+    end
   end
 
   describe "get/1" do
@@ -58,5 +69,18 @@ defmodule CoffeeProjectTest do
 
       assert response == expected_response
     end
+
+    # the test below I created myself to improve my studies
+    test "when coffee doesn't exists, can't get coffee" do
+      id = 20
+
+      expected_response = {:error, %{message: "Coffee not found", status: :not_found}}
+
+      response = CoffeeProject.get(id)
+
+      assert response == expected_response
+    end
   end
+
+  
 end
